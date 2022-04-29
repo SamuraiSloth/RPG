@@ -18,22 +18,32 @@ i = math.ceil(i/100)
 y = 0
 reply = ""
 reply2 = 0
+#slime
 slimehp = 10
 slimestrength = 5
 slimespeed = 5
 slimexp = 2
+#goblin
 goblinhp = 30
 goblinstrength = 15
 goblindefence = 5
 goblinmagicaldefence = 5
 goblinspeed = 5
 goblinxp = 4
+#spider
 spiderhp = 25
 spiderstrength = 17
 spiderdefence = 4
 spidermagicaldefence = 4
 spiderspeed = 6
 spiderxp = 7
+#zombie
+zombiehp = 35
+zombiestrength = 15
+zombiedefence = 7
+zombiemagicaldefence = 7
+zombiespeed = 4
+zombiexp = 15
 encounters = ["Slime", "Goblin", "Spider", "Zombie", "Orc", "Lizardman", "Elf", "Dwarf", "Beastman", "Ogre", "Group of Bandits", "Werewolf", "Golem", "Chimera", "Kraken", "Spirit", "Dragon", "Demon", "Demon General", "Devil"]
 yourencounter = ""
 randomencounters = random.randint(0, random.randint(10, 19))
@@ -42,16 +52,32 @@ youraction = ""
 while True:
   level = (math.floor(xp ** (1./2.25))) + 1
   level = int(level)
+  #slime
   slimehp = 10
   slimestrength = 5
   slimespeed = 5
   slimexp = 2
+  #goblin
   goblinhp = 30
   goblinstrength = 15
   goblindefence = 5
   goblinmagicaldefence = 5
   goblinspeed = 5
   goblinxp = 4
+  #spider
+  spiderhp = 25
+  spiderstrength = 17
+  spiderdefence = 4
+  spidermagicaldefence = 4
+  spiderspeed = 6
+  spiderxp = 7
+  #zombie
+  zombiehp = 35
+  zombiestrength = 15
+  zombiedefence = 7
+  zombiemagicaldefence = 7
+  zombiespeed = 4
+  zombiexp = 15
   #calculates stats
   while i != 0:
     x += 1
@@ -198,7 +224,7 @@ while True:
         reply2 = 0
       if str(reply) == "strength" and int(reply2) <= specialstatuspoints:
         strength += int(reply2)
-        print("Your strength stat is now " + str(strength))
+        print("Your strength stat is now " + zstr(strength))
         specialstatuspoints -= reply2
         print("You now have " + str(specialstatuspoints) + " status points")
         reply2 = 0
@@ -233,12 +259,14 @@ while True:
         print("You now have " + str(specialstatuspoints) + " status points")
         reply2 = 0
       elif int(reply2) > specialstatuspoints:
-          print("You do not have enough status points to do this.")
+        print("You do not have enough status points to do this.")
+  #encounters
   yourencounter = encounters[randomencounters]
   print("You encounter a " + str(yourencounter) + ".")
   randomencounters = random.randint(0, random.randint(10, 19))
   print("")
-  youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run:")
+  youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run: ")
+  #slime
   if yourencounter == "Slime":
     if youraction == "weapon":
       slimehp -= strength
@@ -258,7 +286,7 @@ while True:
       print("")
     while slimehp > 0:
       print("")
-      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run:")
+      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run: ")
       if youraction == "weapon":
         slimehp -= strength
         print("You dealt " + str(strength) + " damage to the slime")
@@ -277,6 +305,7 @@ while True:
         xp += slimexp
         print("You gained " + str(slimexp) + " xp!")
         print("")
+  #Goblin
   if yourencounter == "Goblin":
     if youraction == "weapon":
       goblinhp -= (strength - goblindefence)
@@ -296,7 +325,7 @@ while True:
       print("")
     while goblinhp > 0:
       print("")
-      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run:")
+      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run: ")
       if youraction == "weapon":
         goblinhp -= (strength - goblindefence)
         print("You dealt " + str(strength - goblindefence) + " damage to the goblin")
@@ -315,6 +344,7 @@ while True:
       xp += goblinxp
       print("You gained " + str(goblinxp) + " xp!")
       print("")
+  #Spider
   if yourencounter == "Spider":
     if youraction == "weapon":
       spiderhp -= (strength - spiderdefence)
@@ -334,7 +364,7 @@ while True:
       print("")
     while spiderhp > 0:
       print("")
-      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run:")
+      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run: ")
       if youraction == "weapon":
         spiderhp -= (strength - spiderdefence)
         print("You dealt " + str(strength - spiderdefence) + " damage to the spider")
@@ -352,4 +382,43 @@ while True:
       print("")
       xp += spiderxp
       print("You gained " + str(spiderxp) + " xp!")
+      print("")
+  #Zombie
+  if yourencounter == "Zombie":
+    if youraction == "weapon":
+      zombiehp -= (strength - zombiedefence)
+      print("You dealt " + str(strength - zombiedefence) + " damage to the zombie")
+      print("")
+    if youraction == "magic":
+      zombiehp -= (magicalstrength - zombiemagicaldefence)
+      print("You dealt " + str(magicalstrength - zombiemagicaldefence) + " damage to the zombie")
+      print("")
+    if youraction == "run":
+      print("")
+    if zombiehp <= 0:
+      print("You defeated the zombie! Congratulations!")
+      print("")
+      xp += zombiexp
+      print("You gained " + str(zombiexp) + " xp!")
+      print("")
+    while zombiehp > 0:
+      print("")
+      youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run: ")
+      if youraction == "weapon":
+        zombiehp -= (strength - zombiedefence)
+        print("You dealt " + str(strength - zombiedefence) + " damage to the zombie")
+      print("")
+      if youraction == "magic":
+        zombiehp -= (magicalstrength - zombiemagicaldefence)
+        print("You dealt " + str(magicalstrength - zombiemagicaldefence) + " damage to the zombie")
+      print("")
+      if youraction == "run":
+        print("")
+      if youraction != "weapon" and youraction != "magic" and youraction != "run":
+        print("Sorry, could not compute your move. please try again.")
+    if zombiehp <= 0:
+      print("You defeated the zombie! Congratulations!")
+      print("")
+      xp += zombiexp
+      print("You gained " + str(zombiexp) + " xp!")
       print("")
