@@ -224,7 +224,7 @@ while True:
         reply2 = 0
       if str(reply) == "strength" and int(reply2) <= specialstatuspoints:
         strength += int(reply2)
-        print("Your strength stat is now " + zstr(strength))
+        print("Your strength stat is now " + str(strength))
         specialstatuspoints -= reply2
         print("You now have " + str(specialstatuspoints) + " status points")
         reply2 = 0
@@ -295,7 +295,7 @@ while True:
         print("The slime dealt " + str(slimestrength - defence) + " damge to you.")
         slimehp -= magicalstrength
     if youraction == "run":
-      print("")
+      break
     if slimehp <= 0:
       print("You defeated the slime! Congratulations!")
       print("")
@@ -306,13 +306,31 @@ while True:
       print("")
       youraction = input("What would you like to do? If you want to attack with your weapon, type weapon. If you want to attack with magic, type magic. If you want to escape, type run: ")
       if youraction == "weapon":
-        slimehp -= strength
-        print("You dealt " + str(strength) + " damage to the slime")
-      print("")
+        if speed >= slimespeed:
+          slimehp -= strength
+          print("You dealt " + str(strength) + " damage to the slime")
+          print("")
+          if slimehp > 0:
+            hp =(slimestrength - defence)
+          else:
+            print("")
+        if slimespeed > speed:
+          hp -= (slimestrength - defence)
+          print("The slime dealt " + str(slimestrength - defence) + " damge to you.")
+          slimehp -= strength
       if youraction == "magic":
-        slimehp -= magicalstrength
-        print("You dealt " + str(magicalstrength) + " damage to the slime")
-      print("")
+        if speed >= slimespeed:
+          slimehp -= magicalstrength
+          print("You dealt " + str(magicalstrength) + " damage to the slime")
+          print("")
+          if slimehp > 0:
+            hp =(slimestrength - defence)
+          else:
+            print("")
+        if slimespeed > speed:
+          hp -= (slimestrength - defence)
+          print("The slime dealt " + str(slimestrength - defence) + " damge to you.")
+          slimehp -= magicalstrength
       if youraction == "run":
         print("")
       if youraction != "weapon" and youraction != "magic" and youraction != "run":
@@ -353,7 +371,7 @@ while True:
         print("You dealt " + str(magicalstrength - goblinmagicaldefence) + " damage to the goblin")
       print("")
       if youraction == "run":
-        print("")
+        break
       if youraction != "weapon" and youraction != "magic" and youraction != "run":
         print("Sorry, could not compute your move. please try again.")
     if goblinhp <= 0:
@@ -392,7 +410,7 @@ while True:
         print("You dealt " + str(magicalstrength - spidermagicaldefence) + " damage to the spider")
       print("")
       if youraction == "run":
-        print("")
+        break
       if youraction != "weapon" and youraction != "magic" and youraction != "run":
         print("Sorry, could not compute your move. please try again.")
     if spiderhp <= 0:
@@ -431,7 +449,7 @@ while True:
         print("You dealt " + str(magicalstrength - zombiemagicaldefence) + " damage to the zombie")
       print("")
       if youraction == "run":
-        print("")
+        break
       if youraction != "weapon" and youraction != "magic" and youraction != "run":
         print("Sorry, could not compute your move. please try again.")
     if zombiehp <= 0:
