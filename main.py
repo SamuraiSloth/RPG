@@ -269,13 +269,31 @@ while True:
   #slime
   if yourencounter == "Slime":
     if youraction == "weapon":
-      slimehp -= strength
-      print("You dealt " + str(strength) + " damage to the slime")
-      print("")
+      if speed >= slimespeed:
+        slimehp -= strength
+        print("You dealt " + str(strength) + " damage to the slime")
+        print("")
+        if slimehp > 0:
+          hp =(slimestrength - defence)
+        else:
+          print("")
+      if slimespeed > speed:
+        hp -= (slimestrength - defence)
+        print("The slime dealt " + str(slimestrength - defence) + " damge to you.")
+        slimehp -= strength
     if youraction == "magic":
-      slimehp -= magicalstrength
-      print("You dealt " + str(magicalstrength) + " damage to the slime")
-      print("")
+      if speed >= slimespeed:
+        slimehp -= magicalstrength
+        print("You dealt " + str(magicalstrength) + " damage to the slime")
+        print("")
+        if slimehp > 0:
+          hp =(slimestrength - defence)
+        else:
+          print("")
+      if slimespeed > speed:
+        hp -= (slimestrength - defence)
+        print("The slime dealt " + str(slimestrength - defence) + " damge to you.")
+        slimehp -= magicalstrength
     if youraction == "run":
       print("")
     if slimehp <= 0:
