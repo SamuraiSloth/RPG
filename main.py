@@ -198,7 +198,7 @@ while True:
         reply2 = 0
       if str(reply) == "strength" and int(reply2) <= specialstatuspoints:
         strength += int(reply2)
-        print("Your strength stat is now " + zstr(strength))
+        print("Your strength stat is now " + str(strength))
         specialstatuspoints -= reply2
         print("You now have " + str(specialstatuspoints) + " status points")
         reply2 = 0
