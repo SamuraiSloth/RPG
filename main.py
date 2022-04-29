@@ -236,9 +236,12 @@ while True:
         reply2 = 0
       if str(reply) == "magicalstrength" and int(reply2) <= specialstatuspoints:
         magicalstrength += int(reply2)
+        print("")
         print("Your magicalstrength stat is now " + str(magicalstrength))
+        print("")
         specialstatuspoints -= reply2
         print("You now have " + str(specialstatuspoints) + " status points")
+        print("")
         reply2 = 0
       if str(reply) == "magicaldefence" and int(reply2) <= specialstatuspoints:
         magicaldefence += int(reply2)
