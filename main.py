@@ -4,6 +4,7 @@ import random
 xp = 0
 level = (math.floor(xp ** (1./2.25))) + 1
 level = int(level)
+referencelevel = level
 hp = 100
 strength = 20
 defence = 10
@@ -50,6 +51,7 @@ randomencounters = random.randint(0, random.randint(10, 19))
 youraction = ""
 
 while True:
+  referencelevel = level
   level = (math.floor(xp ** (1./2.25))) + 1
   level = int(level)
   #slime
@@ -184,6 +186,7 @@ while True:
   i = level
   i = math.ceil(i/100)
   y = 0
+  i = level-referencelevel
   while i != 0:
    x += 1
    if x == 1:
